@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+void intersecao(int A[], int tamanhoA, int B[], int tamanhoB) {
+    int conjunto[1000] = {0};
+
+    for (int i = 0; i < tamanhoA; i++) {
+        conjunto[A[i]] = 1;
+    }
+
+    printf("Interseção entre os vetores: ");
+
+
+    for (int i = 0; i < tamanhoB; i++) {
+        if (conjunto[B[i]] == 1) {
+            printf("%d ", B[i]);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int tamanhoA, tamanhoB;
+    printf("Digite o tamanho do vetor A: ");
+    scanf("%d", &tamanhoA);
+
+    int vetorA[tamanhoA];
+
+    printf("Digite os %d elementos do vetor A:\n", tamanhoA);
+    for (int i = 0; i < tamanhoA; i++) {
+        scanf("%d", &vetorA[i]);
+    }
+
+    printf("Digite o tamanho do vetor B: ");
+    scanf("%d", &tamanhoB);
+
+    int vetorB[tamanhoB];
+
+    printf("Digite os %d elementos do vetor B:\n", tamanhoB);
+    for (int i = 0; i < tamanhoB; i++) {
+        scanf("%d", &vetorB[i]);
+    }
+
+    intersecao(vetorA, tamanhoA, vetorB, tamanhoB);
+
+    return 0;
+}
