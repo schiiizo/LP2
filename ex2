@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+void inverterVetor(int v[], int tam) {
+    int temp;
+    for (int i = 0; i < tam / 2; i++) {
+        temp = v[i];
+        v[i] = v[tam - 1 - i];
+        v[tam - 1 - i] = temp;
+    }
+}
+
+int main() {
+  const int tam = 5;
+  int V[tam];
+
+  printf("Digite os %d elementos do vetor:\n", tam);
+  for (int i = 0; i < tam; i++) {
+      scanf("%d", &V[i]);
+  }
+  printf("\n");
+
+  inverterVetor(V, tam);
+
+  printf("Vetor invertido: ");
+  for (int i = 0; i < tam; i++) {
+    printf("%d ", V[i]);
+    }
+  printf("\n");
+
+  return 0;
+}
