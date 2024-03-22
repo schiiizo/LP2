@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void diff_arrays(int A[], int sizeA, int B[], int sizeB) {
+    int i, j;
+    int found;
+
+    printf("A - B = {");
+
+    for (i = 0; i < sizeA; i++) {
+        found = 0;
+        for (j = 0; j < sizeB; j++) {
+            if (A[i] == B[j]) {
+                found = 1;
+                break;
+            }
+        }
+        if (!found) {
+            printf("%d", A[i]);
+            if (i < sizeA - 1) {
+                printf(", ");
+            }
+        }
+    }
+
+    printf("}\n");
+}
+
+int main() {
+    int sizeA, sizeB;
+
+    printf("Digite o tamanho do vetor A: ");
+    scanf("%d", &sizeA);
+    int A[sizeA];
+    printf("Digite os elementos do vetor A separados por espaço: ");
+    for (int i = 0; i < sizeA; i++) {
+        scanf("%d", &A[i]);
+    }
+
+    printf("Digite o tamanho do vetor B: ");
+    scanf("%d", &sizeB);
+    int B[sizeB];
+    printf("Digite os elementos do vetor B separados por espaço: ");
+    for (int i = 0; i < sizeB; i++) {
+        scanf("%d", &B[i]);
+    }
+
+    diff_arrays(A, sizeA, B, sizeB);
+
+    return 0;
+}
