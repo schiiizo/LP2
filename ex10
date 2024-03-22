@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+void uniao_arrays(int A[], int sizeA, int B[], int sizeB) {
+    int i, j;
+    int found;
+
+    printf("A B = {");
+
+    // Imprime os elementos do vetor A
+    for (i = 0; i < sizeA; i++) {
+        printf("%d", A[i]);
+        if (i < sizeA - 1) {
+            printf(", ");
+        }
+    }
+
+    // Verifica se cada elemento de B já está presente em A
+    for (i = 0; i < sizeB; i++) {
+        found = 0;
+        for (j = 0; j < sizeA; j++) {
+            if (B[i] == A[j]) {
+                found = 1;
+                break;
+            }
+        }
+        // Se não estiver presente em A, imprime o elemento de B
+        if (!found) {
+            printf(", %d", B[i]);
+        }
+    }
+
+    printf("}\n");
+}
+
+int main() {
+    int sizeA, sizeB;
+
+    printf("Digite o tamanho do vetor A: ");
+    scanf("%d", &sizeA);
+    int A[sizeA];
+    printf("Digite os elementos do vetor A separados por espaço: ");
+    for (int i = 0; i < sizeA; i++) {
+        scanf("%d", &A[i]);
+    }
+
+    printf("Digite o tamanho do vetor B: ");
+    scanf("%d", &sizeB);
+    int B[sizeB];
+    printf("Digite os elementos do vetor B separados por espaço: ");
+    for (int i = 0; i < sizeB; i++) {
+        scanf("%d", &B[i]);
+    }
+
+    uniao_arrays(A, sizeA, B, sizeB);
+
+    return 0;
+}
