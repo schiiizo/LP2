@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void preencher_matriz_aleatoria(int n, int m, int matriz[n][m]) {
+    int i, j;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < m; j++) {
+            matriz[i][j] = rand() % 10;
+        }
+    }
+}
+
+void multiplicar_matrizes(int n, int m, int p, int A[n][m], int B[m][p], int C[n][p]) {
+    int i, j, k;
+
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < p; j++) {
+            C[i][j] = 0;
+        }
+    }
+
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < p; j++) {
+            for (k = 0; k < m; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+void imprimir_matriz(int n, int m, int matriz[n][m]) {
+    int i, j;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < m; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    srand(time(NULL));
+
+    int n = 3;
+    int m = 2;
+    int p = 3;
+
+    int A[3][2];
+    int B[2][3];
+    int C[3][3];
+
+    preencher_matriz_aleatoria(n, m, A);
+    preencher_matriz_aleatoria(m, p, B);
+
+    printf("Matriz A:\n");
+    imprimir_matriz(n, m, A);
+
+    printf("\nMatriz B:\n");
+    imprimir_matriz(m, p, B);
+
+    multiplicar_matrizes(n, m, p, A, B, C);
+
+    printf("\nMatriz C (A * B):\n");
+    imprimir_matriz(n, p, C);
+
+    return 0;
+}
