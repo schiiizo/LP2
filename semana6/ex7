@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+void multiplicar_matrizes(int n, int m, int p, int A[n][m], int B[m][p], int C[n][p]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            C[i][j] = 0;
+
+            for (int k = 0; k < m; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
+
+void imprimir_matriz(int n, int m, int matriz[n][m]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n, m, p;
+
+    printf("Digite o número de linhas da matriz A: ");
+    scanf("%d", &n);
+    printf("Digite o número de colunas da matriz A: ");
+    scanf("%d", &m);
+    printf("Digite o número de colunas da matriz B: ");
+    scanf("%d", &p);
+
+    int A[n][m], B[m][p], C[n][p];
+
+    printf("Digite os elementos da matriz A:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("Elemento A[%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    printf("Digite os elementos da matriz B:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < p; j++) {
+            printf("Elemento B[%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    multiplicar_matrizes(n, m, p, A, B, C);
+
+    printf("O resultado da multiplicação das matrizes A e B resulta em:\n");
+    imprimir_matriz(n, p, C);
+
+    return 0;
+}
