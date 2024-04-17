@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+#define PI 3.14159
+
+float calcular_area_esfera(float raio) {
+    float area;
+    area = 4 * PI * raio * raio;
+    return area;
+}
+
+int main() {
+    float raio, area;
+    
+    printf("Digite o raio da esfera: ");
+    scanf("%f", &raio);
+    
+    area = calcular_area_esfera(raio);
+    
+    printf("raio = %.2f, area = %.2f\n", raio, area);
+    
+    return 0;
+}
