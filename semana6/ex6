@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+void soma_matrizes(int n, int m, int A[n][m], int B[n][m], int C[n][m]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+}
+
+void imprimir_matriz(int n, int m, int matriz[n][m]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n, m;
+
+    printf("Digite o número de linhas das matrizes: ");
+    scanf("%d", &n);
+    printf("Digite o número de colunas das matrizes: ");
+    scanf("%d", &m);
+
+    int A[n][m], B[n][m], C[n][m];
+
+    printf("Digite os elementos da matriz A:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("Elemento A[%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    printf("Digite os elementos da matriz B:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            printf("Elemento B[%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    soma_matrizes(n, m, A, B, C);
+
+    printf("A soma das matrizes A e B resulta em:\n");
+    imprimir_matriz(n, m, C);
+
+    return 0;
+}
