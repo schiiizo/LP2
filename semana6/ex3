@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int soma_diagonal_secundaria(int ordem, int matriz[][ordem]) {
+    int soma = 0;
+
+    for (int i = 0; i < ordem; i++) {
+        soma += matriz[i][ordem - 1 - i];
+    }
+
+    return soma;
+}
+
+int main() {
+    int ordem;
+
+    printf("Digite a ordem da matriz quadrada: ");
+    scanf("%d", &ordem);
+
+    int matriz[ordem][ordem];
+
+    printf("Digite os elementos da matriz:\n");
+    for (int i = 0; i < ordem; i++) {
+        for (int j = 0; j < ordem; j++) {
+            printf("Elemento [%d][%d]: ", i + 1, j + 1);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    int soma = soma_diagonal_secundaria(ordem, matriz);
+
+    printf("A soma dos valores da diagonal secundária da matriz é: %d\n", soma);
+
+    return 0;
+}
