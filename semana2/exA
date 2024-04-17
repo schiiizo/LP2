@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    float media, frequencia;
+    
+    printf("Digite a média do aluno (de 0.0 a 10.0): ");
+    scanf("%f", &media);
+    
+    printf("Digite a porcentagem de frequência do aluno (de 0 a 100%%): ");
+    scanf("%f", &frequencia);
+    
+    if (frequencia < 75) {
+        printf("Situação do aluno: REPROVADO\n");
+    } else if (media >= 7.5) {
+        printf("Situação do aluno: APROVADO\n");
+    } else {
+        printf("Situação do aluno: DE EXAME\n");
+    }
+    
+    return 0;
+}
