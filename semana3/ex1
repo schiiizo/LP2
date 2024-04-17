@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+float fahrenheit_para_celsius(float temp_fahrenheit) {
+    float temp_celsius = (temp_fahrenheit - 32) * 5/9;
+    return temp_celsius;
+}
+
+int main() {
+    float temp_fahrenheit, temp_celsius;
+    
+    printf("Digite a temperatura em Fahrenheit: ");
+    scanf("%f", &temp_fahrenheit);
+    
+    temp_celsius = fahrenheit_para_celsius(temp_fahrenheit);
+    
+    printf("%.2f graus Fahrenheit equivalem a %.2f graus Celsius.\n", temp_fahrenheit, temp_celsius);
+    
+    return 0;
+}
