@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int divisiveis(int arr[], int x, int size, int index) {
+    if (index == size) {
+        return 0;
+    } else {
+        if (arr[index] % x == 0) {
+            return arr[index] + divisiveis(arr, x, size, index + 1);
+        } else {
+            return divisiveis(arr, x, size, index + 1);
+        }
+    }
+}
+
+int main() {
+    int arr[] = {10, 5, 20, 25, 30};
+    int x = 5;
+    int size = sizeof(arr) / sizeof(arr[0]);
+    printf("Soma dos números divisíveis por %d em arr[]: %d\n", x, divisiveis(arr, x, size, 0));
+    return 0;
+}
