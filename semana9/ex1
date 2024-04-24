@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char senha_correta[] = "senha123";
+    char senha_inserida[20];
+    int tentativas = 0;
+
+    do {
+        printf("Digite a senha: ");
+        scanf("%s", senha_inserida);
+
+        if (strcmp(senha_inserida, senha_correta) == 0) {
+            printf("Acesso concedido!\n");
+            break;
+        } else {
+            printf("Senha incorreta. Tente novamente.\n");
+            tentativas++;
+        }
+    } while (tentativas < 3);
+
+    if (tentativas == 3) {
+        printf("Acesso revogado.\n");
+    }
+
+    return 0;
+}
