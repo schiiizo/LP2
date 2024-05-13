@@ -1,0 +1,150 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100
+
+void append(int vetor[], int *tamanho, int elemento);
+void insert(int vetor[], int *tamanho, int indice, int elemento);
+int pop(int vetor[], int *tamanho);
+void remove_elemento(int vetor[], int *tamanho, int elemento);
+void reverse(int vetor[], int tamanho);
+void sort(int vetor[], int tamanho);
+
+int main() {
+    int lista[MAX_SIZE] = {5, 3, 7};
+    int tamanho = 3;
+
+    int count = 0;
+    for (int i = 0; i < tamanho; i++) {
+        if (lista[i] == 3) {
+            count++;
+        }
+    }
+    printf("Count of 3: %d\n", count);
+
+    int index = -1;
+    for (int i = 0; i < tamanho; i++) {
+        if (lista[i] == 7) {
+            index = i;
+            break;
+        }
+    }
+    printf("Index of 7: %d\n", index);
+
+    int novo_elemento = 2;
+    insert(lista, &tamanho, 1, novo_elemento);
+
+    printf("Lista com inserção:");
+    for (int i = 0; i < tamanho; i++) {
+        printf(" %d", lista[i]);
+    }
+    printf("\n");
+
+    int popped_element = pop(lista, &tamanho);
+    printf("Popped element: %d\n", popped_element);
+
+    printf("Lista com pop:");
+    for (int i = 0; i < tamanho; i++) {
+        printf(" %d", lista[i]);
+    }
+    printf("\n");
+
+    int elemento_a_remover = 2;
+    remove_elemento(lista, &tamanho, elemento_a_remover);
+
+    printf("Lista com remoção:");
+    for (int i = 0; i < tamanho; i++) {
+        printf(" %d", lista[i]);
+    }
+    printf("\n");
+
+    reverse(lista, tamanho);
+
+    printf("Lista com reversão:");
+    for (int i = 0; i < tamanho; i++) {
+        printf(" %d", lista[i]);
+    }
+    printf("\n");
+
+    sort(lista, tamanho);
+
+    printf("Lista com ordenação:");
+    for (int i = 0; i < tamanho; i++) {
+        printf(" %d", lista[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+void append(int vetor[], int *tamanho, int elemento) {
+    if (*tamanho < MAX_SIZE) {
+        vetor[*tamanho] = elemento;
+        (*tamanho)++;
+    } else {
+        printf("Erro: Vetor cheio!\n");
+    }
+}
+
+void insert(int vetor[], int *tamanho, int indice, int elemento) {
+    if (*tamanho < MAX_SIZE && indice >= 0 && indice <= *tamanho) {
+        for (int i = *tamanho; i > indice; i--) {
+            vetor[i] = vetor[i - 1];
+        }
+        vetor[indice] = elemento;
+        (*tamanho)++;
+    } else {
+        printf("Erro: Índice inválido ou vetor cheio!\n");
+    }
+}
+
+int pop(int vetor[], int *tamanho) {
+    if (*tamanho > 0) {
+        int elemento_removido = vetor[*tamanho - 1];
+        (*tamanho)--;
+        return elemento_removido;
+    } else {
+        printf("Erro: Vetor vazio!\n");
+        return -1;
+    }
+}
+
+void remove_elemento(int vetor[], int *tamanho, int elemento) {
+    int encontrado = 0;
+    for (int i = 0; i < *tamanho; i++) {
+        if (vetor[i] == elemento) {
+            encontrado = 1;
+            for (int j = i; j < *tamanho - 1; j++) {
+                vetor[j] = vetor[j + 1];
+            }
+            (*tamanho)--;
+            break;
+        }
+    }
+    if (!encontrado) {
+        printf("Elemento não encontrado!\n");
+    }
+}
+
+void reverse(int vetor[], int tamanho) {
+    int inicio = 0;
+    int fim = tamanho - 1;
+    while (inicio < fim) {
+        int temp = vetor[inicio];
+        vetor[inicio] = vetor[fim];
+        vetor[fim] = temp;
+        inicio++;
+        fim--;
+    }
+}
+
+void sort(int vetor[], int tamanho) {
+    for (int i = 0; i < tamanho - 1; i++) {
+        for (int j = 0; j < tamanho - i - 1; j++) {
+            if (vetor[j] > vetor[j + 1]) {
+                int temp = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = temp;
+            }
+        }
+    }
+}
